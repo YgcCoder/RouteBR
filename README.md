@@ -1,35 +1,39 @@
 # RouteBR Framework
 
-`RouteBR` is a de-identified code scaffold for the paper idea of **route before response** in boundary-sensitive financial service systems.
+`RouteBR` is a de-identified companion repository for the paper idea of **route before response** in boundary-sensitive financial service systems.
 
-This repository contains:
+The paper studies a production routing problem in customer-facing financial services: a mixed-intent request may look answerable in natural language while still being sent to an inadmissible downstream service path. The repository mirrors that control structure with a lightweight, publishable scaffold.
+
+## What This Repository Contains
 
 - a minimal multi-stage routing pipeline
 - example action and entity configuration
 - a generic model integration port
+- representative paper examples in resource form
 
-This repository does **not** contain:
+## What This Repository Does Not Contain
 
 - proprietary prompts
 - internal service identifiers
 - raw user logs
 - production policies
 - internal evaluation data
+- the full proprietary deployment stack
 
-## What The Framework Demonstrates
+## Relation To The Paper
 
-The scaffold follows the paper's high-level routing chain:
+The paper argues that, in high-stakes customer-facing financial systems, route selection should happen before response generation. This repository reflects that architecture through the following routing chain:
 
 1. `routing-cue extraction`
 2. `candidate narrowing`
 3. `boundary evaluation`
 4. `entity grounding`
 5. `final dispatch`
-6. `response-stage handoff to a bounded downstream path`
+6. `bounded downstream handoff before response generation`
 
-The framework is intentionally lightweight. It is meant to show system structure, control flow, and extensibility rather than to reproduce the proprietary production stack.
+This repository is therefore a **runnable research scaffold**, not a turn-key production package and not an end-to-end reproduction of the proprietary deployment environment.
 
-## Project Layout
+## Repository Structure
 
 ```text
 routebr_framework/
@@ -38,6 +42,8 @@ routebr_framework/
 ├── .gitignore
 ├── examples/
 │   └── demo.py
+├── resources/
+│   └── paper_examples_zh.json
 └── src/
     └── routebr/
         ├── __init__.py
@@ -52,40 +58,9 @@ routebr_framework/
         ├── llm_interface.py
         ├── router.py
         └── types.py
-├── resources/
-│   └── paper_examples_zh.json
 ```
 
-## Repository Scope
-
-This repository is a structural research scaffold, not a turn-key production package.
-
-It is intended to expose:
-
-- the routing stages
-- the component boundaries
-- the model integration port
-- representative paper resources
-
-It is not intended to reproduce the proprietary deployment environment end to end.
-
-## Where The Files Are
-
-The scaffold lives under:
-
-`/Users/moriflare/Desktop/quant/intern/routebr_framework`
-
-Core code is under:
-
-`/Users/moriflare/Desktop/quant/intern/routebr_framework/src/routebr`
-
-Representative paper examples are stored as JSON content under:
-
-`/Users/moriflare/Desktop/quant/intern/routebr_framework/resources/paper_examples_zh.json`
-
-## How This Maps To The Paper
-
-The repository is intentionally aligned with the paper structure:
+## Mapping From Code To Paper
 
 - `cue_extractor.py` corresponds to `mixed-intent decomposition`
 - `candidate_narrowing.py` corresponds to `candidate narrowing`
@@ -94,11 +69,11 @@ The repository is intentionally aligned with the paper structure:
 - `dispatcher.py` corresponds to `final dispatch`
 - `router.py` corresponds to the end-to-end `pre-response routing layer`
 
-The current code is a de-identified scaffold, not the proprietary production implementation. That means the control flow matches the paper, while prompts, policies, service identifiers, and data remain excluded.
+The control flow aligns with the paper, while sensitive prompts, deployment rules, production identifiers, and internal datasets remain excluded.
 
 ## Model Integration Port
 
-If you only want a provided model-access interface and do not want any model-specific code in the repository, use:
+This repository does not bind to any specific model provider. If you want to connect your own model gateway, use:
 
 - `llm_interface.py` for the abstract model port
 - `llm_cue_extractor.py` for an optional cue extractor built on top of that port
@@ -123,7 +98,7 @@ gateway = MyModelGateway()
 router = BoundaryAwareRouter(cue_extractor=LLMCueExtractor(gateway))
 ```
 
-The main routing chain does not need to change.
+The rest of the routing chain does not need to change.
 
 ## Core Concepts
 
@@ -145,21 +120,33 @@ The runtime control state that determines whether a candidate action is:
 - handoff-only
 - blocked
 
-## Extending The Scaffold
+## Scope And Limitations
 
-You can replace any stage without changing the overall contract:
+This repository is intended to support:
 
-- replace `CueExtractor` with an LLM-backed structured extractor
-- replace `CandidateNarrower` with embedding search or retrieval over a larger service catalog
-- replace `BoundaryEvaluator` with policy-engine integration
-- replace `EntityGrounder` with a knowledge base or alias resolver
-- replace `Dispatcher` with a learned ranker or business-priority controller
+- structural inspection of the routing architecture
+- component replacement and local experimentation
+- understanding of how the paper's control stages fit together
+
+It is not intended to:
+
+- reproduce the paper's proprietary production deployment
+- reproduce internal evaluation data or exact industrial metrics
+- serve as a drop-in financial production system
+
+## Resources
+
+Representative mixed-intent Chinese publication examples are stored in:
+
+- `resources/paper_examples_zh.json`
+
+These examples are de-identified and generalized. They are not raw user logs.
 
 ## Suggested GitHub Positioning
 
 If you publish this repository with the paper, describe it as:
 
-> a de-identified research scaffold that mirrors the route-before-response control structure without exposing proprietary data or production policies
+> a de-identified companion scaffold that mirrors the route-before-response control structure without exposing proprietary data, prompts, or production policies
 
 ## License
 

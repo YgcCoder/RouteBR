@@ -163,4 +163,4 @@ If you publish this repository with the paper, describe it as:
 
 ## License
 
-Choose the license you want before publishing. No license file is included by default.
+MIT License

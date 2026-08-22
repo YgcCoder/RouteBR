@@ -1,0 +1,6 @@
+action_id,service_name,description,required_object_types,allowed_boundary_states,interface_version
+A1_ADVISORY,Advisory response,"Explanation or recommendation-oriented response without initiating an operation",ETF,ALLOW|CLARIFY|DEFER|HANDOFF|REJECT,v2
+A2_INFO_LOOKUP,Information lookup,"Structured information-card or topic-record retrieval",ETF|TOPIC,ALLOW|CLARIFY|DEFER|HANDOFF|REJECT,v2
+A3_ACCOUNT_ANALYSIS,Account or portfolio analysis,"Controlled analysis requiring account and canonical asset context",ACCOUNT|ETF,ALLOW|CLARIFY|DEFER|HANDOFF|REJECT,v2
+A4_SUPPORT_RESPONSE,Support response,"Explanation de-escalation or non-transactional assistance",NONE|SERVICE,ALLOW|CLARIFY|DEFER|HANDOFF|REJECT,v1
+A5_PROTECTED_ACTION,Protected action,"Safeguarded order-management path requiring explicit runtime permission",ETF|ACCOUNT,ALLOW|CLARIFY|DEFER|HANDOFF|REJECT,v2

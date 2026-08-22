@@ -1,0 +1,36 @@
+{
+  "status": "COMPLETE_SIX_BACKENDS",
+  "inputs": {
+    "experiments/results/confirm/a_ground/entity/predictions.csv": "d1c83a057689ba6e9d584f0168ce7b7c822bf509fb05c9d03136a520dfcfccf4",
+    "experiments/results/confirm/a_state/flip/predictions.csv": "7576580382ccea23acb64c8e43418e3c40250a3679d0b1072cf6d8add4199ab1",
+    "experiments/results/confirm/b1_direct/flip/predictions.csv": "5bc3c62fec223419e106b9e24f563cb495b92aff1e4e9397e637fe301d5bc71c",
+    "experiments/results/confirm/b1_direct/main/predictions.csv": "b7d6445b34ae7d5979d63dfa6f0af87f8a0da45fe6b44c02b880112e29dd6e25",
+    "experiments/results/confirm/b2_direct_guard/flip/predictions.csv": "4763f3da4087115fcc8779d545b19b427d91d1cfd471cf689451cc1aa4b466f5",
+    "experiments/results/confirm/b2_direct_guard/main/predictions.csv": "567fd8a633df6c85449a0895af08482f07720453317e934c0b65352fae3883d3",
+    "experiments/results/confirm/routebr/entity/predictions.csv": "12e53fc235302bce17388a18e398a236725ca6aa7a5f8cdc35bb21dc316bb275",
+    "experiments/results/confirm/routebr/flip/predictions.csv": "957e9c5a1ba95c78126a0c4b2802eeb307c2a60f279dbef9088e69560e44097f",
+    "experiments/results/confirm/routebr/main/predictions.csv": "da14633b1ae5c5d94f92761c3debf24ed1bf9866cdf121981e1983df24f7404e",
+    "experiments/results/select/deepseek_v4_flash_efficiency/entity/predictions.csv": "bfdfa7ee88775f42de86fd872bfb28a8379ebcd9022b7e8bcd25f2ea8f1300f8",
+    "experiments/results/select/deepseek_v4_flash_efficiency/flip/predictions.csv": "fa23ce5bec93581849d0f0fb0a8773f4c01e690f202b51bb5849798f06327396",
+    "experiments/results/select/deepseek_v4_flash_efficiency/main/predictions.csv": "e9eb042cdbb2f7625bbff8d0331e39ec90faf3fd7acaf42bc6de928d45842d17",
+    "experiments/results/select/deepseek_v4_primary/entity/predictions.csv": "e86b728e41a4f1f18614b276ddcac088f6cc5e904bdbab13d38badea2a6dc2ca",
+    "experiments/results/select/deepseek_v4_primary/flip/predictions.csv": "46f1969dc2cb493b61a680428e45f61a394ac954d8167ddc1c492bbf7d8b2316",
+    "experiments/results/select/deepseek_v4_primary/main/predictions.csv": "219ab5e5cba04bf96940556b273477382c0eeab48cff80a8d0e530419f1f2468",
+    "experiments/results/select/ohmygpt_gpt4o_historical/entity/predictions.csv": "730b7a7db28cab01cc22170b31d6e6500e37716f30dbaff2f57bd6fcfa411a31",
+    "experiments/results/select/ohmygpt_gpt4o_historical/flip/predictions.csv": "776b6a144d7b95eb5b2b53f07f1311ad570ba7a673004dd4f3f3ff63d5ba2abe",
+    "experiments/results/select/ohmygpt_gpt4o_historical/main/predictions.csv": "76960d9bf403c1972e850bd8c9250627ce89df8db214d951f064b2cb1af1eaed",
+    "experiments/results/select/ohmygpt_gpt52_frontier/entity/predictions.csv": "3d191d51487af173d9df240897e5756213914983c2c3f5ff3392dd109809038a",
+    "experiments/results/select/ohmygpt_gpt52_frontier/flip/predictions.csv": "005aacc17d1ec4e22d2cb0e735daf16d5293321f235d4a93a383e19971ccbde5",
+    "experiments/results/select/ohmygpt_gpt52_frontier/main/predictions.csv": "1e6801230672be52f3a1614ce2b176dbdca9b8318e669fe3d3666edcb5856928",
+    "experiments/results/select/qwencloud_qwen37plus_robustness/entity/predictions.csv": "de8f34b87a88123a0c74163dc6899fba65d38fa43e5fc5e5a2ee70ad2a848e04",
+    "experiments/results/select/qwencloud_qwen37plus_robustness/flip/predictions.csv": "b95887db3f4df8815d7279cb89b6b3ab44823a10bb708720f18dddc92d07b546",
+    "experiments/results/select/qwencloud_qwen37plus_robustness/main/predictions.csv": "32fa3dc62b5051c4f7f7204484ee22e3ffd2ab58cf856559cb6f555c57721beb",
+    "experiments/results/select/qwencloud_qwen38max_robustness/entity/predictions.csv": "a790dae2267659eb33ab45202622c61a9f45764785e6c50949edf73147b744f4",
+    "experiments/results/select/qwencloud_qwen38max_robustness/flip/predictions.csv": "6d0c7f9224ae0a125646a12a7cacd04e5ffbd9976b7672828d5bbdd83ce71c97",
+    "experiments/results/select/qwencloud_qwen38max_robustness/main/predictions.csv": "6bbe78b89f14fb9d369922555c9aac173d9dfcf16b966e9d25144ddf11b47dd2"
+  },
+  "outputs": {
+    "analysis/results/FINAL_RESULTS.json": "e9969996cb64ea2b89d7ae8a16fb284b70b829f1574ee2a34f2f3867ffb71353",
+    "analysis/results/FINAL_RESULTS.md": "470380d0ced0d1f39516ce5d9882e7b3cf0f7bffda63b405580ba15b3eb16b9a"
+  }
+}

@@ -1,153 +1,55 @@
-# RouteBR Framework
 
-`RouteBR` is a de-identified companion repository for the paper idea of **route before response** in boundary-sensitive financial service systems.
+# RouteBR
 
-The paper studies a production routing problem in customer-facing financial services: a mixed-intent request may look answerable in natural language while still being sent to an inadmissible downstream service path. The repository mirrors that control structure with a lightweight, publishable scaffold.
+RouteBR is a reference implementation and reproducibility artifact for fail-closed pre-response routing in LLM-enabled customer-service software. One model call proposes a primary action and a closed-list object. Deterministic code commits to that primary action, evaluates versioned runtime rules, validates the object contract, and emits either a typed dispatch or a bounded terminal. Lower-ranked candidates are audit-only and cannot replace a blocked primary action.
 
-## What This Repository Contains
+## Repository contents
 
-- a minimal multi-stage routing pipeline
-- example action and entity configuration
-- a generic model integration port
-- representative paper examples in resource form
+- `src/routebr/`: dependency-free controller, policy engine, typed records, replay backend, and hosted-API adapter.
+- `tests/`: deterministic unit tests for contract, state, grounding, repair, and primary-route commitment.
+- `data/`: 600 privacy-preserving synthetic scenarios, frozen SELECT/CONFIRM subsets, catalogs, rules, and validator.
+- `experiments/`: frozen prompts, credential-free API profiles, rerun scripts, and normalized case-level receipts for 1,960 system-case executions.
+- `analysis/`: result reconstruction and integrity checks.
+- `paper/`: LaTeX source and figures matching the audited manuscript. The compiled PDF is intentionally excluded because PDF build metadata contains wall-clock timestamps.
 
-## What This Repository Does Not Contain
+## Quick verification
 
-- proprietary prompts
-- internal service identifiers
-- raw user logs
-- production policies
-- internal evaluation data
-- the full proprietary deployment stack
-
-## Relation To The Paper
-
-The paper argues that, in high-stakes customer-facing financial systems, route selection should happen before response generation. This repository reflects that architecture through the following routing chain:
-
-1. `routing-cue extraction`
-2. `candidate narrowing`
-3. `boundary evaluation`
-4. `entity grounding`
-5. `final dispatch`
-6. `bounded downstream handoff before response generation`
-
-This repository is therefore a **runnable research scaffold**, not a turn-key production package and not an end-to-end reproduction of the proprietary deployment environment.
-
-## Repository Structure
-
-```text
-routebr_framework/
-├── README.md
-├── pyproject.toml
-├── .gitignore
-├── examples/
-│   └── demo.py
-├── resources/
-│   └── paper_examples_zh.json
-└── src/
-    └── routebr/
-        ├── __init__.py
-        ├── action_catalog.py
-        ├── boundary_evaluator.py
-        ├── candidate_narrowing.py
-        ├── cue_extractor.py
-        ├── defaults.py
-        ├── dispatcher.py
-        ├── entity_grounder.py
-        ├── llm_cue_extractor.py
-        ├── llm_interface.py
-        ├── router.py
-        └── types.py
+```bash
+python3 -m pip install -e .
+python3 -m unittest discover -s tests -v
+python3 data/validate_dataset.py   --cases data/routebr_600.csv   --catalog data/catalog.csv   --rules data/boundary_rules.csv   --entities data/entity_catalog.csv   --review-mode joint
+python3 analysis/analyze_results.py --require-six
 ```
 
-## Mapping From Code To Paper
+The verification commands do not call a hosted model. Rerunning the hosted matrix requires the environment variables named in `.env.example`; keys are never stored by the repository.
 
-- `cue_extractor.py` corresponds to `mixed-intent decomposition`
-- `candidate_narrowing.py` corresponds to `candidate narrowing`
-- `boundary_evaluator.py` corresponds to `boundary evaluation`
-- `entity_grounder.py` corresponds to `entity grounding`
-- `dispatcher.py` corresponds to `final dispatch`
-- `router.py` corresponds to the end-to-end `pre-response routing layer`
+## Reproducing hosted runs
 
-The control flow aligns with the paper, while sensitive prompts, deployment rules, production identifiers, and internal datasets remain excluded.
+Validate profiles without network access:
 
-## Model Integration Port
-
-This repository does not bind to any specific model provider. If you want to connect your own model gateway, use:
-
-- `llm_interface.py` for the abstract model port
-- `llm_cue_extractor.py` for an optional cue extractor built on top of that port
-
-You only need to implement:
-
-```python
-from routebr import StructuredLLM
-
-
-class MyModelGateway(StructuredLLM):
-    def generate_json(self, system_prompt: str, user_prompt: str) -> dict:
-        ...
+```bash
+python3 experiments/preflight_models.py   --profiles experiments/api_profiles.json   --no-network
 ```
 
-Then inject it into the router:
+Run one dry case without a network call:
 
-```python
-from routebr import BoundaryAwareRouter, LLMCueExtractor
-
-gateway = MyModelGateway()
-router = BoundaryAwareRouter(cue_extractor=LLMCueExtractor(gateway))
+```bash
+python3 experiments/run_case.py   --profiles experiments/api_profiles.json   --profile deepseek_v4_primary   --system routebr   --split MAIN   --cases data/routebr_confirm_320.csv   --output-dir /tmp/routebr-dry-run   --limit 1   --dry-run
 ```
 
-The rest of the routing chain does not need to change.
+For a paid rerun, remove `--dry-run`, supply the required credential in the environment, use a new output directory, and pass the explicit prompt-review and joint-review confirmations described by `python3 experiments/run_case.py --help`. Hosted aliases may change after the frozen run, so exact regeneration is not guaranteed.
 
-## Core Concepts
+## Results retained in this artifact
 
-### `Action`
+- Backend screening: 960 SELECT executions across six hosted backends.
+- Confirmatory matrix: 1,000 executions for RouteBR, B1 Direct, B2 Direct+Guard, state enforcement removal, and closed-grounding removal.
+- Each public receipt retains the synthetic request payload, output content, token counts, reported model identity, retry events, and controller trace.
+- Wall-clock timestamps, endpoint URLs, provider response IDs, system fingerprints, absolute paths, credentials, and process logs are removed.
 
-The downstream service class that may be invoked, such as advisory, information lookup, human handoff, or protected action flow.
+## Data and provenance
 
-### `Object`
-
-The product, topic, symbol, concept, or account-related entity referenced by the request.
-
-### `Boundary`
-
-The runtime control state that determines whether a candidate action is:
-
-- allowed
-- clarification-needed
-- deferred
-- handoff-only
-- blocked
-
-## Scope And Limitations
-
-This repository is intended to support:
-
-- structural inspection of the routing architecture
-- component replacement and local experimentation
-- understanding of how the paper's control stages fit together
-
-It is not intended to:
-
-- reproduce the paper's proprietary production deployment
-- reproduce internal evaluation data or exact industrial metrics
-- serve as a drop-in financial production system
-
-## Resources
-
-Representative mixed-intent Chinese publication examples are stored in:
-
-- `resources/paper_examples_zh.json`
-
-These examples are de-identified and generalized. They are not raw user logs.
-
-## Suggested GitHub Positioning
-
-If you publish this repository with the paper, describe it as:
-
-> a de-identified companion scaffold that mirrors the route-before-response control structure without exposing proprietary data, prompts, or production policies
+The scenarios are not raw customer logs. They are privacy-preserving synthetic reconstructions informed by recurring confidential-request patterns at one real financial institution. The authors report that three engineers from that institution jointly reviewed the scenarios and labels for practice relevance. The release does not claim independent annotation, adjudication, or inter-annotator agreement. See `data/README.md` and `data/PROVENANCE.md`.
 
 ## License
 
-MIT License
+This repository retains the project's existing MIT License. See `LICENSE`.

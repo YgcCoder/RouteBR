@@ -1,13 +1,14 @@
+
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "routebr-framework"
-version = "0.1.0"
-description = "De-identified route-before-response routing scaffold"
+name = "routebr"
+version = "1.0.0"
+description = "Fail-closed pre-response routing with deterministic policy enforcement"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = []
 
 [tool.setuptools]

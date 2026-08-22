@@ -1,0 +1,67 @@
+{
+  "deepseek_v4_primary": {
+    "provider": "deepseek_official",
+    "base_url": "https://api.deepseek.com",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "model": "deepseek-v4-pro",
+    "formal_result_eligible": true,
+    "request_options": {
+      "thinking": {"type": "disabled"},
+      "temperature": 0,
+      "max_tokens": 2048
+    }
+  },
+  "deepseek_v4_flash_efficiency": {
+    "provider": "deepseek_official",
+    "base_url": "https://api.deepseek.com",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "model": "deepseek-v4-flash",
+    "formal_result_eligible": true,
+    "request_options": {
+      "thinking": {"type": "disabled"},
+      "temperature": 0,
+      "max_tokens": 2048
+    }
+  },
+  "ohmygpt_gpt4o_historical": {
+    "provider": "ohmygpt_openai_compatible",
+    "base_url": "https://cn2us02.opapi.win/v1",
+    "api_key_env": "APSEC_API_KEY",
+    "model": "gpt-4o-2024-11-20",
+    "formal_result_eligible": true,
+    "request_options": {"temperature": 0, "max_tokens": 2048}
+  },
+  "ohmygpt_gpt52_frontier": {
+    "provider": "ohmygpt_openai_compatible",
+    "base_url": "https://cn2us02.opapi.win/v1",
+    "api_key_env": "APSEC_API_KEY",
+    "model": "gpt-5.2",
+    "accepted_reported_models": ["gpt-5.2", "gpt-5.2-2025-12-11"],
+    "formal_result_eligible": true,
+    "request_options": {"temperature": 0, "max_completion_tokens": 2048}
+  },
+  "qwencloud_qwen38max_robustness": {
+    "provider": "qwencloud_token_plan",
+    "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+    "api_key_env": "QWENCLOUD_API_KEY",
+    "model": "qwen3.8-max",
+    "formal_result_eligible": true,
+    "request_options": {
+      "temperature": 0,
+      "max_tokens": 2048,
+      "enable_thinking": false
+    }
+  },
+  "qwencloud_qwen37plus_robustness": {
+    "provider": "qwencloud_token_plan",
+    "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+    "api_key_env": "QWENCLOUD_API_KEY",
+    "model": "qwen3.7-plus",
+    "formal_result_eligible": true,
+    "request_options": {
+      "temperature": 0,
+      "max_tokens": 2048,
+      "enable_thinking": false
+    }
+  }
+}

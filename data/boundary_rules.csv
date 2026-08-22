@@ -1,0 +1,10 @@
+rule_id,priority,applies_to,condition_json,decision,explanation,version
+R001,10,*,"{""safety_escalation_required"":true}",HANDOFF,"A runtime safety escalation terminates automated routing",v1
+R010,20,*,"{""request_supported"":false}",REJECT,"The requested capability is outside the benchmark policy",v1
+R020,30,*,"{""service_available"":false}",DEFER,"An unavailable service path is deferred",v1
+R030,40,*,"{""request_scope_clear"":false}",CLARIFY,"The requested operation or information need is underspecified",v1
+R040,50,A1_ADVISORY|A2_INFO_LOOKUP|A3_ACCOUNT_ANALYSIS|A5_PROTECTED_ACTION,"{""entity_resolved"":false}",CLARIFY,"An object-sensitive path requires a resolved entity",v1
+R050,60,A3_ACCOUNT_ANALYSIS|A5_PROTECTED_ACTION,"{""identity_verified"":false}",CLARIFY,"An account-sensitive path requires verified session context",v1
+R060,70,A5_PROTECTED_ACTION,"{""action_permission"":false}",REJECT,"A protected action cannot be dispatched without permission",v1
+R070,80,A1_ADVISORY|A3_ACCOUNT_ANALYSIS|A5_PROTECTED_ACTION,"{""context_fresh"":false}",CLARIFY,"Stale context must be refreshed before a context-sensitive dispatch",v1
+R999,999,*,"{}",ALLOW,"Default only when no higher-priority boundary rule applies",v1

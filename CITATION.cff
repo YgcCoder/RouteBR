@@ -1,0 +1,21 @@
+
+cff-version: 1.2.0
+message: "If you use RouteBR, please cite the accompanying paper."
+title: "RouteBR: Route Before Response"
+type: software
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/YgcCoder/RouteBR"
+authors:
+  - family-names: Cao
+    given-names: Yuchen
+  - family-names: Mao
+    given-names: Zhenyu
+  - family-names: Keung
+    given-names: Jacky Wai
+  - family-names: Wang
+    given-names: Yifei
+  - family-names: Lin
+    given-names: Guancheng
+  - family-names: Zhang
+    given-names: Jingyu

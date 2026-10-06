@@ -3,7 +3,7 @@
   "artifact_status": "READY_FOR_PUBLIC_RELEASE",
   "system_case_executions": 1960,
   "case_level_receipts": 1960,
-  "source_paper_zip_sha256": "d4ff54d10e2ca5534515dbab4c1dcb5e813663e10de04d1ceead1487f55179eb",
+  "source_paper_zip_sha256": "83c829598e54008d82ad476a8e5beb6574cbd4865b964756b7e6291bc989f832",
   "files": [
     {
       "path": ".env.example",
@@ -10211,14 +10211,14 @@
       "sha256": "dc335b13ce384b617d3a6dc66f0a0e0a23bf4d519c407d40e584bdb186bd7e3c"
     },
     {
-      "path": "paper/figures/routebr_overview.png",
-      "bytes": 742830,
-      "sha256": "a490b7fc6c4658265c59794642510a7210895587d1ccad5e83b30eb5e587b8f8"
+      "path": "paper/figures/routebr_overview_v26.png",
+      "bytes": 1419287,
+      "sha256": "9effd3821e7db918a2135d31484d8f405c304de3f444db5f6030ba6501698dcd"
     },
     {
       "path": "paper/main.tex",
-      "bytes": 63313,
-      "sha256": "31333df93ab5cb5ebc6c757fdcfde9e76758f17dff9e8ce4f87917c5aeb1440d"
+      "bytes": 63124,
+      "sha256": "4916758d635cfbc5e8f4e84fd91e8d1724ac6a256b6bb9595d75a33e75104e19"
     },
     {
       "path": "paper/references.bib",

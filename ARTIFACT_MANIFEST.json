@@ -3,7 +3,7 @@
   "artifact_status": "READY_FOR_PUBLIC_RELEASE",
   "system_case_executions": 1960,
   "case_level_receipts": 1960,
-  "source_paper_zip_sha256": "07284ae61dfd3fac77bc9965805974fc5c7611af84d28bd952f834d92f79f110",
+  "source_paper_zip_sha256": "d4ff54d10e2ca5534515dbab4c1dcb5e813663e10de04d1ceead1487f55179eb",
   "files": [
     {
       "path": ".env.example",
@@ -10218,12 +10218,12 @@
     {
       "path": "paper/main.tex",
       "bytes": 63313,
-      "sha256": "852a7de483efd8a6d4566b859bed3d14254f31fd36f61799f4bb0dca5d7184df"
+      "sha256": "31333df93ab5cb5ebc6c757fdcfde9e76758f17dff9e8ce4f87917c5aeb1440d"
     },
     {
       "path": "paper/references.bib",
-      "bytes": 14012,
-      "sha256": "08a11c1fb0a17cfcb4649f1fe99f77a97e724a4d3fa4f8098a763a20c9e60778"
+      "bytes": 12427,
+      "sha256": "946e1af8d8d7045b8a1d779c264847f92c0a8ea35d7206ad5ca4a6a03e3f6e7b"
     },
     {
       "path": "pyproject.toml",
